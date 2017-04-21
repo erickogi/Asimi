@@ -1,20 +1,39 @@
 package com.erickogi14gmail.asimi;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.erickogi14gmail.asimi.Adapters.Remainders_Model_Adapter;
+import com.erickogi14gmail.asimi.AddRemainder.AddRemainder;
+import com.erickogi14gmail.asimi.Data.DBOperations;
+import com.erickogi14gmail.asimi.Data.DBPojo;
+import com.erickogi14gmail.asimi.utills.HidingScrollListener;
+import com.erickogi14gmail.asimi.utills.RecyclerTouchListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    static Context context;
+    static View view;
+    static RecyclerView.LayoutManager mLayoutManager;
+    ArrayList<DBPojo> data_model;
+    RecyclerView lv;
+    Remainders_Model_Adapter remainders_mode_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +46,55 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(MainActivity.this, AddRemainder.class));
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
+
+
+        lv = (RecyclerView) view.findViewById(R.id.recycle_view);
+
+        lv.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), lv, new RecyclerTouchListener.ClickListener() {
+
+            @Override
+            public void onClick(View view, int position) {
+
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                // Model model = dish_model.get(position);
+                //  Toast.makeText(getApplicationContext(), model.getDish_name() + " is long selected!", Toast.LENGTH_SHORT).show();
+            }
+        }));
+
+        lv.setOnScrollListener(new HidingScrollListener() {
+            @Override
+            public void onHide() {
+
+            }
+
+            @Override
+            public void onShow() {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -97,5 +161,20 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    void setRecyclerView() {
+        DBOperations dbOperations = new DBOperations(MainActivity.this);
+        data_model = dbOperations.getGameList();
+        remainders_mode_adapter = new Remainders_Model_Adapter(data_model, MainActivity.this);
+        remainders_mode_adapter.notifyDataSetChanged();
+
+
+        mLayoutManager = new LinearLayoutManager(MainActivity.this);
+        lv.setLayoutManager(mLayoutManager);
+        lv.setItemAnimator(new DefaultItemAnimator());
+
+
+        lv.setAdapter(remainders_mode_adapter);
     }
 }
