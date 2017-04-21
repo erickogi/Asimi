@@ -27,31 +27,6 @@ public class Remainders_Model_Adapter extends RecyclerView.Adapter<Remainders_Mo
         // this.listData = listData;
     }
 
-    public interface OnItemClickListener {
-
-        void onItemClick(DBPojo item);
-
-    }
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView_remainder_name,
-                textView_remainder_description,
-                textView_remainder_place, textView_remainder_time, txtId;
-
-
-        public MyViewHolder(View view) {
-            super(view);
-            textView_remainder_name = (TextView) view.findViewById(R.id.txt_remainder_list_title);
-            textView_remainder_description = (TextView) view.findViewById(R.id.txt_remainder_list_description);
-            textView_remainder_place = (TextView) view.findViewById(R.id.txt_remainder_place);
-            textView_remainder_time = (TextView) view.findViewById(R.id.txt_remainder_time);
-            txtId = (TextView) view.findViewById(R.id.txt_remainder_id);
-
-
-        }
-    }
-
-
     public Remainders_Model_Adapter(ArrayList<DBPojo> modelList, Context context) {
         this.modelList = modelList;
         this.context = context;
@@ -82,6 +57,17 @@ public class Remainders_Model_Adapter extends RecyclerView.Adapter<Remainders_Mo
 
     }
 
+    @Override
+    public int getItemCount() {
+        return modelList.size();
+    }
+
+    public interface OnItemClickListener {
+
+        void onItemClick(DBPojo item);
+
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView_remainder_name,
                 textView_remainder_description,
@@ -98,11 +84,6 @@ public class Remainders_Model_Adapter extends RecyclerView.Adapter<Remainders_Mo
 
 
         }
-    }
-
-    @Override
-    public int getItemCount() {
-        return modelList.size();
     }
 
 }

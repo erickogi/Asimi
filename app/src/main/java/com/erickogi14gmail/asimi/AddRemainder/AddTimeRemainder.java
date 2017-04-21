@@ -9,12 +9,12 @@ import android.view.View;
 
 import com.erickogi14gmail.asimi.R;
 
-public class AddRemainder extends AppCompatActivity {
+public class AddTimeRemainder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_remainder);
+        setContentView(R.layout.activity_add_time_remainder);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

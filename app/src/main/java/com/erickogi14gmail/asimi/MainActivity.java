@@ -1,5 +1,6 @@
 package com.erickogi14gmail.asimi;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,9 +17,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.erickogi14gmail.asimi.Adapters.Remainders_Model_Adapter;
-import com.erickogi14gmail.asimi.AddRemainder.AddRemainder;
+import com.erickogi14gmail.asimi.AddRemainder.AddLocationRemainder;
+import com.erickogi14gmail.asimi.AddRemainder.AddTimeRemainder;
 import com.erickogi14gmail.asimi.Data.DBOperations;
 import com.erickogi14gmail.asimi.Data.DBPojo;
 import com.erickogi14gmail.asimi.utills.HidingScrollListener;
@@ -46,14 +49,38 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, AddRemainder.class));
+
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.dialog_choose_placeortime);
+                dialog.setTitle("Choose Reminder");
+                TextView textView_location = (TextView) dialog.findViewById(R.id.txt_dialog_location);
+                TextView textView_time = (TextView) dialog.findViewById(R.id.txt_dialog_time);
+
+
+                textView_location.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        startActivity(new Intent(MainActivity.this, AddLocationRemainder.class));
+                    }
+                });
+                textView_time.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        startActivity(new Intent(MainActivity.this, AddTimeRemainder.class));
+                    }
+                });
+
+
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
+                dialog.show();
             }
         });
 
 
-        lv = (RecyclerView) view.findViewById(R.id.recycle_view);
+        lv = (RecyclerView) findViewById(R.id.recycle_view);
 
         lv.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), lv, new RecyclerTouchListener.ClickListener() {
 
@@ -82,7 +109,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
+        setRecyclerView();
 
 
 
@@ -166,15 +193,25 @@ public class MainActivity extends AppCompatActivity
     void setRecyclerView() {
         DBOperations dbOperations = new DBOperations(MainActivity.this);
         data_model = dbOperations.getGameList();
-        remainders_mode_adapter = new Remainders_Model_Adapter(data_model, MainActivity.this);
-        remainders_mode_adapter.notifyDataSetChanged();
+        try {
+            if (data_model.isEmpty()) {
+
+            } else {
 
 
-        mLayoutManager = new LinearLayoutManager(MainActivity.this);
-        lv.setLayoutManager(mLayoutManager);
-        lv.setItemAnimator(new DefaultItemAnimator());
+                remainders_mode_adapter = new Remainders_Model_Adapter(data_model, MainActivity.this);
+                remainders_mode_adapter.notifyDataSetChanged();
 
 
-        lv.setAdapter(remainders_mode_adapter);
+                mLayoutManager = new LinearLayoutManager(MainActivity.this);
+                lv.setLayoutManager(mLayoutManager);
+                lv.setItemAnimator(new DefaultItemAnimator());
+
+
+                lv.setAdapter(remainders_mode_adapter);
+            }
+        } catch (Exception a) {
+
+        }
     }
 }
