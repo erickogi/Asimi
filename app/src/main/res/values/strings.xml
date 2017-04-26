@@ -15,4 +15,8 @@
         Name: %1$s\nAddress: %2$s\nPhone: %3$s\nWebsite: %4$s\nRating: %5$s\nId: %6$s\n
     </string>
     <string name="title_activity_map">Map</string>
+    <string name="title_hint">Enter Reminder Title</string>
+    <string name="reminder_hint">Enter Reminder Details</string>
+    <string name="bt_label">Set Reminder</string>
+    <string name="time_picker">Time Picker</string>
 </resources>

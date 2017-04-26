@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:src="@drawable/ic_location_on_black_24dp" />
+                    android:src="@drawable/ic_menu_manage" />
 
                 <TextView
                     android:id="@+id/txt_dialog_location"
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:src="@drawable/ic_access_time_black_24dp" />
+                    android:src="@drawable/ic_menu_manage" />
 
                 <TextView
                     android:id="@+id/txt_dialog_time"

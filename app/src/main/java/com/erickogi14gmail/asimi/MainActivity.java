@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        startActivity(new Intent(MainActivity.this, AddTimeRemainder.class));
+                       startActivity(new Intent(MainActivity.this, AddTimeRemainder.class));
                     }
                 });
 
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity
 
 
         lv = (RecyclerView) findViewById(R.id.recycle_view);
+
 
         lv.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), lv, new RecyclerTouchListener.ClickListener() {
 

@@ -47,12 +47,12 @@ public class Remainders_Model_Adapter extends RecyclerView.Adapter<Remainders_Mo
         holder.textView_remainder_description.setText(model.getREMAINDER_DESCRIPTION());
         holder.textView_remainder_place.setText(model.getREMAINDER_PLACE_NAME());
 
-        long j = (model.getREMAINDER_TIME());
+        String j = (model.getREMAINDER_TIME());
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd,yyyy HH:mm");
         Date rs = new Date(j);
 
 
-        holder.textView_remainder_time.setText(sdf.format(rs));
+        holder.textView_remainder_time.setText(j);
         holder.txtId.setText(String.valueOf(model.getID()));
 
     }

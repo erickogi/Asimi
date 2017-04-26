@@ -43,6 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_alarm_add_black_24dp"></android.support.design.widget.FloatingActionButton>
+        android:src="@drawable/common_plus_signin_btn_icon_dark"></android.support.design.widget.FloatingActionButton>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -16,6 +16,8 @@ import static com.erickogi14gmail.asimi.Data.DBKeys.KEY_REMAINDER_PLACE_LONGITUD
 import static com.erickogi14gmail.asimi.Data.DBKeys.KEY_REMAINDER_PLACE_NAME;
 import static com.erickogi14gmail.asimi.Data.DBKeys.KEY_REMAINDER_STATE;
 import static com.erickogi14gmail.asimi.Data.DBKeys.KEY_REMAINDER_TIME;
+import static com.erickogi14gmail.asimi.Data.DBKeys.KEY_REMINDER_DATE;
+import static com.erickogi14gmail.asimi.Data.DBKeys.TABLE;
 
 /**
  * Created by kimani kogi on 4/21/2017.
@@ -41,6 +43,7 @@ public class DBOperations {
         values.put(KEY_REMAINDER_PLACE_LATITUDE, Keys.REMAINDER_PLACE_LATITUDE);
         values.put(KEY_REMAINDER_PLACE_LONGITUDE, Keys.REMAINDER_PLACE_LONGITUDE);
         values.put(KEY_REMAINDER_TIME, Keys.REMAINDER_TIME);
+        values.put(KEY_REMINDER_DATE, Keys.REMINDER_DATE);
 
         values.put(KEY_REMAINDER_STATE, Keys.REMAINDER_STATE);
         values.put(KEY_REMAINDER_KEY, Keys.REMAINDER_KEY);
@@ -54,8 +57,24 @@ public class DBOperations {
         return (int) keys_Id;
     }
 
+
+    public void createReminder(String REMAINDER_NAME, String REMAINDER_DESCRIPTION, String REMAINDER_TIME, String REMINDER_DATE ){
+        SQLiteDatabase db = dbHandler.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_REMAINDER_NAME, REMAINDER_NAME);
+        values.put(KEY_REMAINDER_DESCRIPTION, REMAINDER_DESCRIPTION);
+
+        values.put(KEY_REMAINDER_TIME, REMAINDER_TIME);
+        values.put(KEY_REMINDER_DATE, REMINDER_DATE);
+
+
+        db.insert(TABLE, null ,values);
+
+    }
+
     public boolean update(String Id, String REMAINDER_NAME, String REMAINDER_DESC, String REMAINDER_PLACE_LAT, String REMAINDER_PLACE_LONG
-            , String REMAINDER_STATE, String REMAINDER_KEY, String REMAINDER_PLACE_NAME, Long REMAINDER_TIME
+            , String REMAINDER_STATE, String REMAINDER_KEY, String REMAINDER_PLACE_NAME, String REMAINDER_TIME, String REMINDER_DATE
 
 
     ) {
@@ -70,6 +89,7 @@ public class DBOperations {
         values.put(KEY_REMAINDER_PLACE_LONGITUDE, REMAINDER_PLACE_LONG);
 
         values.put(KEY_REMAINDER_TIME, REMAINDER_TIME);
+        values.put(KEY_REMINDER_DATE, REMINDER_DATE);
 
         values.put(KEY_REMAINDER_STATE, REMAINDER_STATE);
         values.put(KEY_REMAINDER_KEY, REMAINDER_KEY);
@@ -101,7 +121,7 @@ public class DBOperations {
             while (cursor.moveToNext()) {
                 DBPojo pojo = new DBPojo();
 
-                String name = cursor.getString(1);
+               // String name = cursor.getString(1);
                 pojo.setID(cursor.getInt(0));
                 pojo.setREMAINDER_NAME(cursor.getString(1));
                 pojo.setREMAINDER_DESCRIPTION(cursor.getString(2));
@@ -109,12 +129,13 @@ public class DBOperations {
                 pojo.setREMAINDER_PLACE_LATITUDE(cursor.getString(3));
                 pojo.setREMAINDER_PLACE_LONGITUDE(cursor.getString(4));
 
-                pojo.setREMAINDER_TIME(Long.parseLong(cursor.getString(5)));
+                pojo.setREMAINDER_TIME(cursor.getString(5));
+                pojo.setREMINDER_DATE(cursor.getString(6));
 
-                pojo.setREMAINDER_STATE(cursor.getString(6));
-                pojo.setREMAINDER_KEY(cursor.getString(7));
+                pojo.setREMAINDER_STATE(cursor.getString(7));
+                pojo.setREMAINDER_KEY(cursor.getString(8));
 
-                pojo.setREMAINDER_PLACE_NAME(cursor.getString(8));
+                pojo.setREMAINDER_PLACE_NAME(cursor.getString(9));
 
 
                 data.add(pojo);

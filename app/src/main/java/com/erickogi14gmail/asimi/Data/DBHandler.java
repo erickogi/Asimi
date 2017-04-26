@@ -23,7 +23,8 @@ public class DBHandler extends SQLiteOpenHelper {
             + DBKeys.KEY_REMAINDER_PLACE_LATITUDE + " TEXT ,"
             + DBKeys.KEY_REMAINDER_PLACE_LONGITUDE + " TEXT ,"
 
-            + DBKeys.KEY_REMAINDER_TIME + " LONG ,"
+            + DBKeys.KEY_REMAINDER_TIME + " Text ,"
+            + DBKeys.KEY_REMINDER_DATE + " Text ,"
 
 
             + DBKeys.KEY_REMAINDER_STATE + " TEXT ,"
@@ -40,6 +41,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(CREATE_TABLE);
     }
 

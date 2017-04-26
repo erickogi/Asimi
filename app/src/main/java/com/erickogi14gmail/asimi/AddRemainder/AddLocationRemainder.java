@@ -33,8 +33,8 @@ public class AddLocationRemainder extends AppCompatActivity implements PlaceSele
     private static final String LOG_TAG = "PlaceSelectionListener";
     private static final int REQUEST_SELECT_PLACE = 1000;
     int[] imageId = {
-            R.drawable.ic_location_on_black_24dp,
-            R.drawable.ic_location_searching_black_24dp
+           // R.drawable.ic_location_on_black_24dp,
+            //R.drawable.ic_location_searching_black_24dp
     };
     EditText editTextName;
     FragmentTransaction fragmentTransaction;
