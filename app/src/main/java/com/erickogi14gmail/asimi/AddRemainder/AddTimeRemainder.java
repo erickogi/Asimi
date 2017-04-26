@@ -46,6 +46,12 @@ public class AddTimeRemainder extends AppCompatActivity
         reminderTitle = (EditText) findViewById(R.id.input_reminder_title);
         reminderMsg = (EditText) findViewById(R.id.input_reminder_msg);
         mSet = (Button) findViewById(R.id.set_reminder);
+        mSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AddTimeRemainder.this, "Clicked ", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
     @Override
