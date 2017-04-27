@@ -15,12 +15,12 @@ public class DBPojo {
     private String REMAINDER_STATE;
     private String REMAINDER_KEY;
     private String REMAINDER_PLACE_NAME;
-    private String REMAINDER_TIME;
-    private String REMINDER_DATE;
+    private long REMAINDER_TIME;
+
 
     public DBPojo(int ID, String REMAINDER_NAME, String REMAINDER_DESCRIPTION, String REMAINDER_PLACE_LATITUDE,
                   String REMAINDER_PLACE_LONGITUDE, String REMAINDER_STATE, String REMAINDER_KEY, String REMAINDER_PLACE_NAME,
-                  String REMAINDER_TIME, String REMINDER_DATE ) {
+                  long REMAINDER_TIME) {
         this.ID = ID;
         this.REMAINDER_NAME = REMAINDER_NAME;
         this.REMAINDER_DESCRIPTION = REMAINDER_DESCRIPTION;
@@ -30,18 +30,17 @@ public class DBPojo {
         this.REMAINDER_KEY = REMAINDER_KEY;
         this.REMAINDER_PLACE_NAME = REMAINDER_PLACE_NAME;
         this.REMAINDER_TIME = REMAINDER_TIME;
-        this.REMINDER_DATE = REMINDER_DATE;
     }
 
     public DBPojo() {
 
     }
 
-    public String getREMAINDER_TIME() {
+    public long getREMAINDER_TIME() {
         return REMAINDER_TIME;
     }
 
-    public void setREMAINDER_TIME(String REMAINDER_TIME) {
+    public void setREMAINDER_TIME(long REMAINDER_TIME) {
         this.REMAINDER_TIME = REMAINDER_TIME;
     }
 
@@ -107,13 +106,5 @@ public class DBPojo {
 
     public void setREMAINDER_PLACE_NAME(String REMAINDER_PLACE_NAME) {
         this.REMAINDER_PLACE_NAME = REMAINDER_PLACE_NAME;
-    }
-
-    public String getREMINDER_DATE() {
-        return REMINDER_DATE;
-    }
-
-    public void setREMINDER_DATE(String REMINDER_DATE) {
-        this.REMINDER_DATE = REMINDER_DATE;
     }
 }

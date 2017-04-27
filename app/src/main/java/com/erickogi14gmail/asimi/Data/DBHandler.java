@@ -24,7 +24,6 @@ public class DBHandler extends SQLiteOpenHelper {
             + DBKeys.KEY_REMAINDER_PLACE_LONGITUDE + " TEXT ,"
 
             + DBKeys.KEY_REMAINDER_TIME + " Text ,"
-            + DBKeys.KEY_REMINDER_DATE + " Text ,"
 
 
             + DBKeys.KEY_REMAINDER_STATE + " TEXT ,"

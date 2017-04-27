@@ -46,12 +46,9 @@ public class AddTimeRemainder extends AppCompatActivity
         reminderTitle = (EditText) findViewById(R.id.input_reminder_title);
         reminderMsg = (EditText) findViewById(R.id.input_reminder_msg);
         mSet = (Button) findViewById(R.id.set_reminder);
-        mSet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AddTimeRemainder.this, "Clicked ", Toast.LENGTH_LONG).show();
-            }
-        });
+
+
+        storeData();
 
     }
     @Override
@@ -93,20 +90,31 @@ public class AddTimeRemainder extends AppCompatActivity
         txtDate.setText(date);
     }
 
-    public void fetchdata(){
-        String mTitle = reminderTitle.getText().toString();
-        String mMsg = reminderTitle.getText().toString();
-        String time = String.valueOf(pickerHour)+ ":"+ String.valueOf(pickerMin);
-        String date = String.valueOf(pickerDay)+ ", "+String.valueOf(pickerMonth)+", "+String.valueOf(pickerYear);
+    public void storeData(){
+        mSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String mTitle = reminderTitle.getText().toString();
+                String mMsg = reminderMsg.getText().toString();
+                String mTime = String.valueOf(pickerHour)+ ":"+ String.valueOf(pickerMin);
+                String mDate = String.valueOf(pickerDay)+ ", "+String.valueOf(pickerMonth)+", "+String.valueOf(pickerYear);
+
+                long date = pickerYear+pickerMonth+pickerDay;
+                long ltime = pickerHour+pickerMin;
+                long time = date+ltime;
 
 
+                Toast.makeText( AddTimeRemainder.this, "Title is "+mTitle, Toast.LENGTH_SHORT).show();
+                Toast.makeText( AddTimeRemainder.this, "Message is"+ mMsg, Toast.LENGTH_LONG).show();
 
-        mDBOperations.createReminder(mTitle, mMsg, time, date);
 
-        Toast.makeText(AddTimeRemainder.this, "Reminder set Succsessfull",Toast.LENGTH_SHORT).show();
+                mDBOperations = new DBOperations(getBaseContext());
+               // mDBOperations.insert();
+
+            }
+        });
     }
-
-
 
 
 

@@ -17,7 +17,7 @@ public class DBKeys {
     public static final String KEY_REMAINDER_DESCRIPTION = "remainder_description";
     public static final String KEY_REMAINDER_PLACE_LATITUDE = "lat";
     public static final String KEY_REMAINDER_TIME = "time";
-    public static final String KEY_REMINDER_DATE = "date";
+
 
     public static final String KEY_REMAINDER_PLACE_LONGITUDE = "long";
     public static final String KEY_REMAINDER_STATE = "state";
@@ -33,7 +33,7 @@ public class DBKeys {
     public String REMAINDER_KEY;
     public String REMAINDER_PLACE_NAME;
     public String REMAINDER_TIME;
-    public String REMINDER_DATE;
+
 
 
 }
