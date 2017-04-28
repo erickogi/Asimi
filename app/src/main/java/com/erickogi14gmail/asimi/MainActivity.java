@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
     static RecyclerView.LayoutManager mLayoutManager;
     ArrayList<DBPojo> data_model;
     RecyclerView lv;
-    Remainders_Model_Adapter remainders_mode_adapter;
+    Remainders_Model_Adapter remainders_model_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -193,6 +195,7 @@ public class MainActivity extends AppCompatActivity
 
     void setRecyclerView() {
         DBOperations dbOperations = new DBOperations(MainActivity.this);
+        dbOperations.open();
         data_model = dbOperations.getGameList();
         try {
             if (data_model.isEmpty()) {
@@ -200,8 +203,8 @@ public class MainActivity extends AppCompatActivity
             } else {
 
 
-                remainders_mode_adapter = new Remainders_Model_Adapter(data_model, MainActivity.this);
-                remainders_mode_adapter.notifyDataSetChanged();
+                remainders_model_adapter = new Remainders_Model_Adapter(data_model, MainActivity.this);
+                remainders_model_adapter.notifyDataSetChanged();
 
 
                 mLayoutManager = new LinearLayoutManager(MainActivity.this);
@@ -209,7 +212,7 @@ public class MainActivity extends AppCompatActivity
                 lv.setItemAnimator(new DefaultItemAnimator());
 
 
-                lv.setAdapter(remainders_mode_adapter);
+                lv.setAdapter(remainders_model_adapter);
             }
         } catch (Exception a) {
 

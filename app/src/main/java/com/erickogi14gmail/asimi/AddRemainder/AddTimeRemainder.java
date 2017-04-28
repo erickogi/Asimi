@@ -18,6 +18,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.erickogi14gmail.asimi.Data.DBHandler;
+import com.erickogi14gmail.asimi.Data.DBKeys;
 import com.erickogi14gmail.asimi.Data.DBOperations;
 import com.erickogi14gmail.asimi.Data.DBPojo;
 import com.erickogi14gmail.asimi.Fragments.DatePickerFragment;
@@ -30,6 +31,7 @@ public class AddTimeRemainder extends AppCompatActivity
 
 
     DBOperations mDBOperations;
+    DBPojo pojo;
 
     private int pickerHour, pickerMin, pickerYear, pickerDay, pickerMonth;
     TextView txtDate, txtTime;
@@ -46,6 +48,8 @@ public class AddTimeRemainder extends AppCompatActivity
         reminderTitle = (EditText) findViewById(R.id.input_reminder_title);
         reminderMsg = (EditText) findViewById(R.id.input_reminder_msg);
         mSet = (Button) findViewById(R.id.set_reminder);
+        mDBOperations = new DBOperations(this);
+        mDBOperations.open();
 
 
         storeData();
@@ -97,20 +101,17 @@ public class AddTimeRemainder extends AppCompatActivity
 
                 String mTitle = reminderTitle.getText().toString();
                 String mMsg = reminderMsg.getText().toString();
-                String mTime = String.valueOf(pickerHour)+ ":"+ String.valueOf(pickerMin);
-                String mDate = String.valueOf(pickerDay)+ ", "+String.valueOf(pickerMonth)+", "+String.valueOf(pickerYear);
+
 
                 long date = pickerYear+pickerMonth+pickerDay;
-                long ltime = pickerHour+pickerMin;
-                long time = date+ltime;
+                long lTime = pickerHour+pickerMin;
+                long time = date+lTime;
 
+                String none = "none";
 
-                Toast.makeText( AddTimeRemainder.this, "Title is "+mTitle, Toast.LENGTH_SHORT).show();
-                Toast.makeText( AddTimeRemainder.this, "Message is"+ mMsg, Toast.LENGTH_LONG).show();
+                mDBOperations.insertData(mTitle, mMsg, none, none, none, none, none, time);
 
-
-                mDBOperations = new DBOperations(getBaseContext());
-               // mDBOperations.insert();
+                Toast.makeText( AddTimeRemainder.this, " Reminder was set successfully " +mTitle, Toast.LENGTH_LONG).show();
 
             }
         });

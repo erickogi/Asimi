@@ -52,7 +52,7 @@ public class Remainders_Model_Adapter extends RecyclerView.Adapter<Remainders_Mo
         Date rs = new Date(j);
 
 
-        holder.textView_remainder_time.setText(String.valueOf(j));
+        holder.textView_remainder_time.setText(String.valueOf(rs));
         holder.txtId.setText(String.valueOf(model.getID()));
 
     }

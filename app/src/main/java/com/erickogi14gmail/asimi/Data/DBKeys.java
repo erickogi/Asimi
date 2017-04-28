@@ -32,7 +32,7 @@ public class DBKeys {
     public String REMAINDER_STATE;
     public String REMAINDER_KEY;
     public String REMAINDER_PLACE_NAME;
-    public String REMAINDER_TIME;
+    public long REMAINDER_TIME;
 
 
 

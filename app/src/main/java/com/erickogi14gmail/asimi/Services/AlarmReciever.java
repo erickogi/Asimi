@@ -29,6 +29,7 @@ public class AlarmReciever extends WakefulBroadcastReceiver {
     }
 
     public void setAlarm(Context context){
+        mDBOperations = new DBOperations(context);
         mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent alarmIntent = new Intent(context, AlarmReciever.class);
         mAlarmIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, 0);
