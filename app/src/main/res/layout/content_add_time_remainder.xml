@@ -13,22 +13,35 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.erickogi14gmail.asimi.AddRemainder.AddTimeRemainder"
     tools:showIn="@layout/activity_add_time_remainder">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
         <EditText
+            style="@style/Widget.Design.TextInputLayout"
             android:id="@+id/input_reminder_title"
             android:layout_marginTop="20dp"
             android:hint="@string/title_hint"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
 
-
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
         <EditText
             android:id="@+id/input_reminder_msg"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:gravity="start"
             android:hint="@string/reminder_hint"/>
+    </android.support.design.widget.TextInputLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
                 <Button
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:id="@+id/set_reminder"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"

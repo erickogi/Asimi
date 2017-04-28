@@ -19,4 +19,6 @@
     <string name="reminder_hint">Enter Reminder Details</string>
     <string name="bt_label">Set Reminder</string>
     <string name="time_picker">Time Picker</string>
+    <string name="enter_time_rem_label">Add New Reminder</string>
+
 </resources>
